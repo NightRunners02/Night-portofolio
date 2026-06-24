@@ -122,14 +122,14 @@ contactForm.addEventListener('submit', async (e) => {
   const message = contactForm.querySelector('textarea').value.trim();
 
   if (!name || !email || !message) {
-    showToast('⚠️ Please fill in all fields.', true);
+    showToast('⚠️ Harap isi semua bidang.', true);
     return;
   }
 
   // Disable button while sending
   const btn = contactForm.querySelector('button[type="submit"]');
   const originalText = btn.innerHTML;
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
   btn.disabled = true;
 
   try {
@@ -153,14 +153,14 @@ contactForm.addEventListener('submit', async (e) => {
       throw new Error(errorText || 'Failed to send message');
     }
 
-    showToast('✅ Message sent successfully! Thank you!');
+    showToast('✅ Pesan berhasil dikirim! Terima kasih!');
     contactForm.reset();
   } catch (err) {
     console.error('Supabase error:', err);
     if (err.message.includes('relation') || err.message.includes('does not exist')) {
-      showToast('⚠️ Database table not set up yet. Please create the "contacts" table in Supabase.', true);
+      showToast('⚠️ Tabel database belum dibuat. Silakan buat tabel "contacts" di Supabase.', true);
     } else {
-      showToast('⚠️ Failed to send message. Please try again later.', true);
+      showToast('⚠️ Gagal mengirim pesan. Silakan coba lagi nanti.', true);
     }
   } finally {
     btn.innerHTML = originalText;
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     new Typed('.typing', {
       strings: [
-        'Creative Developer',
+        'Pengembang Kreatif',
         'UI/UX Designer',
         'Frontend Enthusiast',
         'Code Artist',
