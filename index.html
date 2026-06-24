@@ -328,9 +328,7 @@
     const musicPlayer = document.getElementById('musicPlayer');
     let musicOpen = false;
 
-    // Tombol utama: buka/tutup widget + play/stop lagu
-    musicToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
+    musicToggle.addEventListener('click', () => {
       musicOpen = !musicOpen;
       musicWidget.classList.toggle('open', musicOpen);
       musicToggle.classList.toggle('playing', musicOpen);
@@ -341,22 +339,7 @@
       if (musicOpen) {
         musicPlayer.play();
       } else {
-        // Kalau pencet X → stop lagu
         musicPlayer.pause();
-        musicPlayer.currentTime = 0;
-      }
-    });
-
-    // Klik di luar widget → widget tutup, tapi lagu TETAP jalan
-    document.addEventListener('click', (e) => {
-      if (musicOpen &&
-          !musicWidget.contains(e.target) &&
-          !musicToggle.contains(e.target)) {
-        musicOpen = false;
-        musicWidget.classList.remove('open');
-        musicToggle.classList.remove('playing');
-        musicToggle.innerHTML = '<i class="fas fa-music"></i>';
-        // Lagu TIDAK di-pause, tetap jalan
       }
     });
   </script>
