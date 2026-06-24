@@ -1,29 +1,34 @@
 # Night02 Portfolio 🌙
 
-Portofolio pribadi interaktif milik **Night02** — seorang creative developer yang berfokus pada pembuatan pengalaman web modern, responsif, dan interaktif.
+Portofolio pribadi interaktif milik **NightRunners02** — seorang creative developer yang berfokus pada pembuatan pengalaman web modern, responsif, dan interaktif.
 
 ## ✨ Fitur
 
-- **Hero Section** dengan efek typing, parallax tilt, dan animasi floating avatar
-- **About Me** — profil singkat dan informasi pribadi
-- **Skills** — bar keahlian dengan animasi scroll
-- **Projects** — menampilkan project-project unggulan
-- **FAQ** — pertanyaan umum seputar layanan (Bahasa Indonesia)
+- **Hero Section** dengan efek glitch error, typing neon biru, parallax tilt, dan animasi floating avatar
+- **About Me (Tentang Saya)** — profil singkat dan informasi pribadi dalam Bahasa Indonesia
+- **Skills (Keahlian)** — bar keahlian dengan animasi scroll
+- **Projects (Proyek)** — menampilkan project-project unggulan (grid 2x2 di HP)
+- **FAQ (Pertanyaan Umum)** — dalam Bahasa Indonesia dengan accordion interaktif
 - **Contact Form** — form kontak terintegrasi dengan **Supabase**
+- **Contact Info Clickable** — Email → Gmail, Telepon → WhatsApp API, Lokasi → Google Maps
 - **Custom Cursor** — kursor kustom dengan efek hover
+- **Floating Music Player** — putar lagu lokal dari folder `musik/`, tetap jalan saat widget ditutup
 - **Fully Responsive** — tampilan optimal di semua perangkat (desktop, tablet, mobile)
 - **Scroll Reveal Animation** — animasi elemen saat di-scroll
+- **Mobile Menu Fade In** — animasi smooth saat buka menu di HP
+- **Hamburger Smooth Animation** — garis tiga berubah jadi X dengan mulus
 - **FAQ Accordion** — interaksi tanya-jawab yang interaktif
+- **Favicon** — icon kustom dari URL eksternal
 
 ## 🛠️ Teknologi yang Digunakan
 
 | Teknologi | Kegunaan |
 |-----------|----------|
 | **HTML5** | Struktur halaman |
-| **CSS3** | Styling, animasi, gradient, efek glow |
+| **CSS3** | Styling, animasi, gradient, efek glow, glitch, neon |
 | **JavaScript** | Interaktivitas, animasi scroll, custom cursor, typed effect |
-| **Font Awesome** | Ikon sosial media dan dekorasi |
-| **Typed.js** | Efek mengetik otomatis di hero |
+| **Font Awesome** | Ikon sosial media, kontak, dan dekorasi |
+| **Typed.js** | Efek mengetik otomatis di hero (warna biru neon) |
 | **Supabase** | Backend form kontak (database) |
 
 ## 🚀 Cara Menjalankan
@@ -50,6 +55,8 @@ Night02-Portfolio/
 ├── style.css               # Semua styling & animasi CSS
 ├── script.js               # Semua interaksi JavaScript
 ├── README.md               # Dokumentasi project
+├── musik/                  # Folder audio lokal
+│   └── Tetrix Bass & ROY KNOX - When I'm Gone (...).mp3
 └── projects/               # Halaman detail project
     ├── mobile-app.html
     ├── web-dashboard.html
@@ -65,8 +72,11 @@ Night02-Portfolio/
 
 ## 📧 Kontak
 
-Jika ingin menghubungi, silakan kirim pesan melalui form kontak di website atau email ke **night02@dev.com**.
+Jika ingin menghubungi, silakan kirim pesan melalui form kontak di website atau langsung:
+- 📧 **Email:** [hafizgaming02@gmail.com](mailto:hafizgaming02@gmail.com)
+- 💬 **WhatsApp:** [Chat via WA](https://wa.me/6281234567890)
+- 📍 **Lokasi:** [Indonesia](https://www.google.com/maps?q=Indonesia)
 
 ---
 
-<p align="center">Dibuat dengan ❤️ oleh <strong>Night02</strong></p>
+<p align="center">Dibuat dengan ❤️ oleh <strong>NightRunners02</strong> — Semua konten dalam Bahasa Indonesia 🇮🇩</p>
