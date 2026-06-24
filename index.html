@@ -327,19 +327,41 @@
     const musicWidget = document.getElementById('musicWidget');
     const musicPlayer = document.getElementById('musicPlayer');
     let musicOpen = false;
+    let musicStopped = false;
 
-    musicToggle.addEventListener('click', () => {
-      musicOpen = !musicOpen;
-      musicWidget.classList.toggle('open', musicOpen);
-      musicToggle.classList.toggle('playing', musicOpen);
-      musicToggle.innerHTML = musicOpen
-        ? '<i class="fas fa-times"></i>'
-        : '<i class="fas fa-music"></i>';
+    musicToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
 
-      if (musicOpen) {
+      if (!musicOpen) {
+        // Buka widget + play
+        musicOpen = true;
+        musicWidget.classList.add('open');
+        musicToggle.classList.add('playing');
+        musicToggle.innerHTML = '<i class="fas fa-times"></i>';
+        musicStopped = false;
         musicPlayer.play();
       } else {
+        // Tutup widget + STOP lagu (reset)
+        musicOpen = false;
+        musicStopped = true;
+        musicWidget.classList.remove('open');
+        musicToggle.classList.remove('playing');
+        musicToggle.innerHTML = '<i class="fas fa-music"></i>';
         musicPlayer.pause();
+        musicPlayer.currentTime = 0;
+      }
+    });
+
+    // Klik di luar → widget tutup, tapi lagu TETAP jalan
+    document.addEventListener('click', (e) => {
+      if (musicOpen &&
+          !musicWidget.contains(e.target) &&
+          !musicToggle.contains(e.target)) {
+        musicOpen = false;
+        musicWidget.classList.remove('open');
+        musicToggle.classList.remove('playing');
+        musicToggle.innerHTML = '<i class="fas fa-music"></i>';
+        // Lagu tidak di-pause, tetap berjalan
       }
     });
   </script>
