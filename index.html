@@ -328,28 +328,47 @@
     const musicWidget = document.getElementById('musicWidget');
     const musicPlayer = document.getElementById('musicPlayer');
     let musicOpen = false;
-    let musicStopped = false;
+
+    // Cek apakah ada state musik yang tersimpan
+    const savedState = localStorage.getItem('musicState');
+    if (savedState) {
+      const state = JSON.parse(savedState);
+      if (state.playing) {
+        musicPlayer.currentTime = state.currentTime;
+        musicPlayer.play().then(() => {
+          musicOpen = false;
+          // Widget tetap tertutup, lagu jalan di background
+        }).catch(() => {});
+      }
+    }
+
+    // Simpan state musik setiap 2 detik
+    setInterval(() => {
+      const state = {
+        playing: !musicPlayer.paused && !musicPlayer.ended,
+        currentTime: musicPlayer.currentTime,
+      };
+      localStorage.setItem('musicState', JSON.stringify(state));
+    }, 2000);
 
     musicToggle.addEventListener('click', (e) => {
       e.stopPropagation();
 
       if (!musicOpen) {
-        // Buka widget + play
         musicOpen = true;
         musicWidget.classList.add('open');
         musicToggle.classList.add('playing');
         musicToggle.innerHTML = '<i class="fas fa-times"></i>';
-        musicStopped = false;
         musicPlayer.play();
       } else {
-        // Tutup widget + STOP lagu (reset)
         musicOpen = false;
-        musicStopped = true;
         musicWidget.classList.remove('open');
         musicToggle.classList.remove('playing');
         musicToggle.innerHTML = '<i class="fas fa-music"></i>';
         musicPlayer.pause();
         musicPlayer.currentTime = 0;
+        // Hapus state karena user sengaja stop
+        localStorage.removeItem('musicState');
       }
     });
 
@@ -362,7 +381,7 @@
         musicWidget.classList.remove('open');
         musicToggle.classList.remove('playing');
         musicToggle.innerHTML = '<i class="fas fa-music"></i>';
-        // Lagu tidak di-pause, tetap berjalan
+        // Lagu tetap jalan
       }
     });
   </script>
