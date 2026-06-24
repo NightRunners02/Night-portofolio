@@ -305,5 +305,60 @@
   <!-- Typed.js for typing effect -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="script.js"></script>
+
+  <!-- Floating Music Player -->
+  <button class="music-toggle" id="musicToggle" title="Putar Musik">
+    <i class="fas fa-music"></i>
+  </button>
+  <div class="music-widget" id="musicWidget">
+    <div class="music-info">
+      <i class="fas fa-headphones-alt"></i>
+      <div class="music-text">
+        <h4>Tetrix Bass &amp; ROY KNOX - When I'm Gone</h4>
+        <span>Dubstep · NCS</span>
+      </div>
+    </div>
+    <audio id="musicPlayer" controls preload="none">
+      <source src="musik/Tetrix Bass &amp; ROY KNOX - When I'm Gone (feat. Ellen Louise)  Dubstep  NCS - Copyright Free Music.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+  <script>
+    const musicToggle = document.getElementById('musicToggle');
+    const musicWidget = document.getElementById('musicWidget');
+    const musicPlayer = document.getElementById('musicPlayer');
+    let musicOpen = false;
+
+    // Tombol utama: buka/tutup widget + play/stop lagu
+    musicToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      musicOpen = !musicOpen;
+      musicWidget.classList.toggle('open', musicOpen);
+      musicToggle.classList.toggle('playing', musicOpen);
+      musicToggle.innerHTML = musicOpen
+        ? '<i class="fas fa-times"></i>'
+        : '<i class="fas fa-music"></i>';
+
+      if (musicOpen) {
+        musicPlayer.play();
+      } else {
+        // Kalau pencet X → stop lagu
+        musicPlayer.pause();
+        musicPlayer.currentTime = 0;
+      }
+    });
+
+    // Klik di luar widget → widget tutup, tapi lagu TETAP jalan
+    document.addEventListener('click', (e) => {
+      if (musicOpen &&
+          !musicWidget.contains(e.target) &&
+          !musicToggle.contains(e.target)) {
+        musicOpen = false;
+        musicWidget.classList.remove('open');
+        musicToggle.classList.remove('playing');
+        musicToggle.innerHTML = '<i class="fas fa-music"></i>';
+        // Lagu TIDAK di-pause, tetap jalan
+      }
+    });
+  </script>
 </body>
 </html>
